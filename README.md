@@ -36,3 +36,4 @@ The idea is simple:
 backend/   → FastAPI app, ML training, model serving
 frontend/  → React + TypeScript app (UI for training & predictions)
 ```
+# stock-sentiment-platform
