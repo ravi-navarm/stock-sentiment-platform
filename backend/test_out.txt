@@ -1,0 +1,25 @@
+................                                                         [100%]
+=============================== warnings summary ===============================
+tests/test_model_predict.py::test_P1_predict_after_train
+tests/test_model_predict.py::test_P3_predict_for_unknown_ticker
+tests/test_model_train.py::test_T3_small_window_ok
+tests/test_model_train.py::test_T4_invalid_ticker_no_price_data
+tests/test_model_train.py::test_T5_future_dates_no_price_data
+tests/test_model_train.py::test_T10_large_window_train_success
+tests/test_model_train.py::test_T11_large_window_again_idempotent
+tests/test_model_train.py::test_T12_multi_ticker_train
+tests/test_model_train.py::test_T12_multi_ticker_train
+  /Users/ravikurella/Desktop/stock-sentiment-platform/backend/app/services/market_data_service.py:38: FutureWarning: YF.download() has changed argument auto_adjust default to True
+    df_yf = yf.download(
+
+tests/test_model_predict.py::test_P1_predict_after_train
+tests/test_model_predict.py::test_P3_predict_for_unknown_ticker
+tests/test_model_train.py::test_T3_small_window_ok
+tests/test_model_train.py::test_T10_large_window_train_success
+tests/test_model_train.py::test_T11_large_window_again_idempotent
+tests/test_model_train.py::test_T12_multi_ticker_train
+  /Users/ravikurella/Desktop/stock-sentiment-platform/backend/app/services/feature_service.py:203: FutureWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
+    df_feat = df.groupby("ticker", group_keys=False).apply(_feat_group)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+16 passed, 15 warnings in 9.36s

@@ -1,0 +1,13 @@
+fastapi
+uvicorn[standard]
+pandas
+numpy
+requests
+python-dotenv
+yfinance
+transformers
+torch
+scikit-learn
+tqdm
+joblib
+pydantic-settings   # ⬅️ add this

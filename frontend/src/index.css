@@ -1,0 +1,211 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@layer base {
+  :root {
+    --background: 222 47% 6%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 47% 8%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 10%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 160 84% 39%;
+    --primary-foreground: 222 47% 6%;
+
+    --secondary: 222 47% 14%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 222 30% 18%;
+    --muted-foreground: 215 20% 55%;
+
+    --accent: 187 92% 45%;
+    --accent-foreground: 222 47% 6%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 210 40% 98%;
+
+    --success: 160 84% 39%;
+    --success-foreground: 222 47% 6%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 222 47% 6%;
+
+    --border: 222 30% 18%;
+    --input: 222 30% 14%;
+    --ring: 160 84% 39%;
+
+    --radius: 0.75rem;
+
+    --chart-up: 160 84% 39%;
+    --chart-down: 0 72% 51%;
+    --chart-neutral: 215 20% 55%;
+
+    --glow-primary: 0 0 30px hsl(160 84% 39% / 0.3);
+    --glow-accent: 0 0 30px hsl(187 92% 45% / 0.3);
+
+    --sidebar-background: 222 47% 6%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222 47% 6%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 47% 8%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 10%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 160 84% 39%;
+    --primary-foreground: 222 47% 6%;
+
+    --secondary: 222 47% 14%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 222 30% 18%;
+    --muted-foreground: 215 20% 55%;
+
+    --accent: 187 92% 45%;
+    --accent-foreground: 222 47% 6%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 222 30% 18%;
+    --input: 222 30% 14%;
+    --ring: 160 84% 39%;
+
+    --sidebar-background: 222 47% 8%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 160 84% 39%;
+    --sidebar-primary-foreground: 222 47% 6%;
+    --sidebar-accent: 222 47% 14%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 222 30% 18%;
+    --sidebar-ring: 160 84% 39%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight;
+  }
+}
+
+@layer utilities {
+  .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .font-sans {
+    font-family: 'Inter', sans-serif;
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent;
+  }
+
+  .glow-primary {
+    box-shadow: var(--glow-primary);
+  }
+
+  .glow-accent {
+    box-shadow: var(--glow-accent);
+  }
+
+  .animate-pulse-slow {
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .glass-card {
+    @apply bg-card/60 backdrop-blur-xl border border-border/50;
+  }
+
+  .stat-card {
+    @apply bg-gradient-to-br from-card to-card/80 border border-border/50;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    hsl(var(--muted)) 0%,
+    hsl(var(--secondary)) 50%,
+    hsl(var(--muted)) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+@keyframes scale-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-scale-in {
+  animation: scale-in 0.3s ease-out forwards;
+}
+
+@keyframes slide-up {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-up {
+  animation: slide-up 0.4s ease-out forwards;
+}
