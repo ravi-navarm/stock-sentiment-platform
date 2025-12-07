@@ -543,3 +543,34 @@ robust.
 ---
 
 _End of test case summary file._
+
+```mermaid 
+sequenceDiagram
+participant User
+participant FE as Frontend (React)
+participant API as FastAPI /model/predict-next
+participant MS as model_service
+
+User->>FE: Click "Predict next day" for ticker
+FE->>API: GET /api/v1/model/predict-next/{ticker}
+API->>MS: predict_next(ticker)
+MS->>MS: Select last row for ticker\nfrom \_LAST_TRAIN_DF
+MS->>MS: Extract feature_cols\nand run model.predict_proba
+MS-->>API: prob_up (float in [0,1])
+API-->>FE: 200 OK { prob_up }
+FE-->>User: Display probability / visual cue
+```
+
+```mermaid
+flowchart LR
+A[Raw market data\n(ticker, date, Open, High, Low, Close, Volume)]
+--> B[add_price_features]
+
+B --> C[Feature-enriched prices\nret_1d, ret_5d, vol_5d, vol_21d,\nvolume_z, day_of_week, etc.]
+
+C --> D[build_training_frame]
+D --> E[Training frame\nFEATURE_COLS + target_up]
+
+E --> F[train_model / train_global_model]
+F --> G[_GLOBAL_MODEL stored\nin memory for /predict-next]
+```

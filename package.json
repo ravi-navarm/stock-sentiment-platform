@@ -1,0 +1,15 @@
+{
+  "name": "stock-sentiment-platform",
+  "version": "1.0.0",
+  "description": "This repository contains both the **backend API** and the **frontend web app** for my stock sentiment platform.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nx": "^22.1.3"
+  }
+}

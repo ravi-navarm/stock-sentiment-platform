@@ -1,0 +1,21 @@
+{
+  "extends": "nx/presets/npm.json",
+  "npmScope": "stock-sentiment",
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "nx/tasks-runners/default",
+      "options": {
+        "cacheableOperations": ["build", "test", "lint", "dev", "serve"]
+      }
+    }
+  },
+  "targetDefaults": {
+    "test": {
+      "dependsOn": ["^test"]
+    }
+  },
+  "projects": {
+    "frontend": "frontend",
+    "backend": "backend"
+  }
+}

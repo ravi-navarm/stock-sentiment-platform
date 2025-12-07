@@ -1,0 +1,20 @@
+{
+  "name": "backend",
+  "projectType": "application",
+  "targets": {
+    "serve": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "uvicorn app.main:app --reload",
+        "cwd": "backend"
+      }
+    },
+    "test": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "uv run pytest",
+        "cwd": "backend"
+      }
+    }
+  }
+}

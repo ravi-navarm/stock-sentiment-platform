@@ -36,4 +36,37 @@ The idea is simple:
 backend/   → FastAPI app, ML training, model serving
 frontend/  → React + TypeScript app (UI for training & predictions)
 ```
+
 # stock-sentiment-platform
+
+```mermaid
+graph LR
+subgraph Client
+U[User Browser\nReact SPA]
+end
+
+subgraph Frontend
+FE[Frontend\nVite + React + TS]
+end
+
+subgraph Backend
+API[FastAPI\n/api/v1/...]
+MDS[market_data_service]
+FS[feature_service]
+TFS[training_frame_service]
+MS[model_service\n(RandomForest / LogisticRegression)]
+end
+
+subgraph External
+YF[yfinance / Market Data API]
+end
+
+U --> FE
+FE -->|HTTP JSON| API
+API --> MDS
+MDS -->|OHLCV DataFrame| FS
+FS -->|Feature-enriched DataFrame| TFS
+TFS -->|training frame\n(+ target_up)| MS
+MS -->|metrics / prob_up| API
+MDS -->|ticker history| YF
+```
